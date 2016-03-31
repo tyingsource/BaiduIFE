@@ -1,0 +1,186 @@
+
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		 table{
+		 	font-size: 12px;
+		 	table-layout: fixed;
+		 	empty-cells: show;
+		 	border-collapse: collapse;
+		 	border: 1px solid #cad9ea;
+		 	text-align: left;
+		 	color:black;
+		 }
+		 th{
+		 	color: white;
+		 	background-color:black;
+		 	padding: 3px;
+		 }
+		 tr:nth-child(odd){
+		 	background-color:#CCCCCC;
+		 }
+		 tr:nth-child(2),tr:nth-child(3),tr:nth-child(4){
+		 	color: red;
+		 }
+		 #annima{
+		 	width: 200px;
+		 	transition: width 2s;
+		 	-webkit-transition: width 2s;
+		 	-moz-transition: width 2s;
+		 }
+		  #annima:focus{
+		 	width: 300px;
+		 }
+ol,ul,li
+  { list-style:none; display:inline;}
+  
+  #container
+  {  width:960px; min-height:600px; margin:40px auto; }
+  
+  #main
+  { float:left;width:300px; margin:0 auto; padding:50px inherit;  z-index:1;}
+  
+  #frame
+  {  -webkit-transform:width:300px; height:200px; margin:0 auto; z-index:5; }
+  
+  #inner
+  { width:300px; height:200px; overflow:hidden; }
+  
+  #inner ul
+  { position:relative;}
+  
+  #inner li
+  { position:absolute; left:0px;  opacity:0; }
+  
+  
+  
+ /* 幻灯片代码开始*/ 
+
+  #inner li.animation01,
+  #slider01:checked ~ #inner li.animation01,
+  #slider02:checked ~ #inner li.animation02,
+  #slider03:checked ~ #inner li.animation03
+  { -webkit-animation:img01 6s linear infinite;}
+  
+  #inner li.animation02,
+  #slider03:checked ~ #inner li.animation01,
+  #slider01:checked ~ #inner li.animation02,
+  #slider02:checked ~ #inner li.animation03
+  { -webkit-animation:img02 6s linear infinite; }
+  
+  #inner li.animation03,
+  #slider02:checked ~ #inner li.animation01,
+  #slider03:checked ~ #inner li.animation02,
+  #slider01:checked ~ #inner li.animation03
+  { -webkit-animation:img03 6s linear infinite; }
+  
+ 
+  @-webkit-keyframes img01  {
+    0% { left:0px; }
+	32% { left:0px; opacity:1; z-index:0; }
+	34% { left:300px; opacity:0; z-index:0;}
+	66% { left:300px; opacity:0; z-index:0;}
+	68% { left:-300px; opacity:0;z-index: 0; }
+	98%{left: -300px; opacity: 0;}
+	100% { left:0px;  }
+	}
+   
+  @-webkit-keyframes img02 {
+   0% { left:-300px; opacity:0; }
+	32% { left:-300px; opacity:0; z-index:0; }
+	34% { left:0px; opacity:1; z-index:0; }
+	66% { left:0px; opacity:1; z-index:0;}
+	68% { left:300px; opacity:0; z-index:0;}
+	100% { left:300px;}
+	}
+	
+  @-webkit-keyframes img03  {
+	 0% { left:300px; opacity:0; }
+	32% { left:300px; opacity:0; z-index:0; }
+	34% { left:-300px; opacity:0; z-index:0; }
+	66% { left:-300px; opacity:0; z-index:0;}
+	68% { left:0px; opacity:1; z-index:0;}
+	100% { left:0px; opacity:1; z-index:0;}
+	}
+	
+	/* 滑块代码组块开始*/
+  .frame input
+  { position:absolute; opacity:0;} 
+ 
+  
+  #lbutton
+   { width:300px; height:20px; text-align:center;}
+   
+  #lbutton label
+   { width:20px; height:20px; display:inline-table; color: black;}
+  
+  
+  #lbutton label.lb1,
+  #slider01:checked ~ #lbutton label:nth-child(1),
+  #slider02:checked ~ #lbutton label:nth-child(2),
+  #slider03:checked ~ #lbutton label:nth-child(3)
+  { -webkit-animation:label01 6s linear infinite; }
+	
+  #lbutton label.lb2,
+  #slider03:checked ~ #lbutton label:nth-child(1),
+  #slider01:checked ~ #lbutton label:nth-child(2),
+  #slider02:checked ~ #lbutton label:nth-child(3)
+  { -webkit-animation:label02 6s linear infinite; }
+	
+  #lbutton label.lb3,
+  #slider02:checked ~ #lbutton label:nth-child(1),
+  #slider03:checked ~ #lbutton label:nth-child(2),
+  #slider01:checked ~ #lbutton label:nth-child(3)
+  { -webkit-animation:label03 6s linear infinite; }
+	
+  @-webkit-keyframes label01 {
+	 0% { background:lightcoral; }
+	 32% { background:lightcoral; }
+	 34% { background:lightblue;}
+	 100% { background:lightblue}
+	 }
+	 
+  @-webkit-keyframes label02 {
+	 0% { background:lightblue;}
+	 32% { background:lightblue;}
+	 34% { background:lightcoral; }
+	 66% { background:lightcoral; }
+	 68% { background:lightblue;}
+	 100% { background:lightblue;}
+	 }
+  @-webkit-keyframes label03 {
+	 0% { background:lightblue;}
+	 66% { background:lightblue;}
+	 68% { background:lightcoral; }
+	 100% { background:lightcoral; }
+	 }
+	 
+	
+    /* 利用跳板使用css3选择器改变图片位置*/
+  
+  #slider01:checked ~ #inner li.animation01,
+  #slider02:checked ~ #inner li.animation02,
+  #slider03:checked ~ #inner li.animation03,
+  #slider06:checked ~ #inner li.animation01
+  { opacity:1; z-index:1; left:0px;}
+ 
+ /* 重启所有动画播放*/ 
+  #slider01:active ~ #inner li,
+  #slider01:active ~ #lbutton label,
+  #slider02:active ~ #inner li,
+  #slider02:active ~ #lbutton label,
+  #slider03:active ~ #inner li,
+  #slider03:active ~ #lbutton label,
+ { -webkit-animation-name:none; } 
+ 
+  /* 设置重启时呈现的图片 */   
+  #slider01:active ~ #inner li,
+  #slider02:active ~ #inner li,
+  #slider03:active ~ #inner li,
+  { opacity:0;}
+  #slider01:active ~ #inner li:nth-child(1),
+  #slider02:active ~ #inner li:nth-child(2),
+  #slider03:active ~ #inner li:nth-child(3),
+  { left:0px; z-index:100; opacity:1;}
+
